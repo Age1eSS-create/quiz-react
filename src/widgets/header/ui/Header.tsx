@@ -3,9 +3,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import s from './Header.module.scss';
 import { getUser } from '@/entities/user';
 import { Login } from '@/features/user/login';
+
+import s from './Header.module.scss';
 
 export const Header = () => {
     const user = useSelector(getUser);
@@ -18,7 +19,12 @@ export const Header = () => {
                     <Link to="./main">Вопросы</Link>
                 </nav>
                 {user
-                    ? <div>Профиль</div>
+                    ? (
+                        <div>
+                            Профиль
+                            Выход
+                        </div>
+                    )
                     : <Login />}
             </div>
         </div>
