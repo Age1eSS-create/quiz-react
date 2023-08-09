@@ -1,0 +1,26 @@
+.header {
+  padding: 5px 0;
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: var(--bg-transparent);
+    padding: 15px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .nav {
+      text-transform: uppercase;
+      display: flex;
+      column-gap: 15px;
+      a {
+        color: var(--txt-main);
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+    .profile {
+
+    }
+  }
+}

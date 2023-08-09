@@ -1,0 +1,13 @@
+@import 'reset';
+@import 'variable';
+
+body {
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--txt-main);
+}
+
+*{
+  font-family: sans-serif;
+  font-size: 14px;
+}
