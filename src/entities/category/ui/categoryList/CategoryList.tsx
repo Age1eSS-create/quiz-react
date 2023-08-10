@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 
+import { horizontalScroll } from '@/shared/lib';
+
 import {CategoryItem} from '../categoryItem/CategoryItem';
 import s from './CategoryList.module.scss';
 
@@ -19,13 +21,6 @@ export const CategoryList = () => {
         { id: 5, title: 'Тема вопросов', score: '2000' },
     ];
 
-    const horizontalScroll = (e:any) => {
-        e = window.event || e;
-        const delta = Math.max(-1, Math.min(1, (e?.wheelDelta || -e.detail)));
-        const scroll = document?.getElementById('statistic-table');
-        if (!scroll) return;
-        scroll.scrollLeft -= (delta * 50);
-    };
 
     return (
         <div className={classNames(s.CategoryList)}>

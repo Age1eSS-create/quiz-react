@@ -11,3 +11,23 @@ body {
   font-family: sans-serif;
   font-size: 14px;
 }
+
+// Стили для скролла
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+  background-color: var(--bg-main);
+  border-radius: 5px;
+
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--bg-transparent);
+  border-radius: 9em;
+}
+
+// для Firefox
+* {
+  scrollbar-width: thin;
+  scrollbar-color:  var(--bg-transparent) var(--bg-main);
+
+}
