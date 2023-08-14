@@ -1,5 +1,6 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { createReducerManager, ReduxStoreWithManager } from 'async-reducer-manager';
+
+import { categoryApi } from '@/entities/category';
 
 // import { ThunkExtraArg } from './StateSchema';
 
@@ -9,20 +10,24 @@ import { createReducerManager, ReduxStoreWithManager } from 'async-reducer-manag
  * Возвращает стор
  */
 export function createReduxStore<StateSchema>(rootReducers: ReducersMapObject<StateSchema>) {
-    const reducerManager = createReducerManager<StateSchema>(rootReducers);
+    // const reducerManager = createReducerManager<StateSchema>(rootReducers);
 
     const store = configureStore({
-        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+        // reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+        reducer: {
+            [categoryApi.reducerPath]: categoryApi.reducer,
+        },
         devTools: __IS_DEV__,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(categoryApi.middleware),
         // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         //     serializableCheck: false,
         //     thunk: {
         //         extraArgument,
         //     },
         // }),
-    }) as ReduxStoreWithManager<StateSchema>;
+    });
 
-    store.reducerManager = reducerManager;
+    // store.reducerManager = reducerManager;
 
     return store;
 }

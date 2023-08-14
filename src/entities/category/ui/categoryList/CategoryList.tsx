@@ -1,32 +1,35 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import {ICategory, useGetCategoryListQuery} from '@/entities/category';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { horizontalScroll } from '@/shared/lib';
 
-import {CategoryItem} from '../categoryItem/CategoryItem';
+// import { getCategoryThunk } from '../../controller/getCategoryTHUNK';
+import { CategoryItem } from '../categoryItem/CategoryItem';
 import s from './CategoryList.module.scss';
 
 export const CategoryList = () => {
+    // const dispatch = useAppDispatch();
+    const { data, error, isLoading } = useGetCategoryListQuery(1);
+    // const [category, setCategory] = useState<Array<ICategory>>([]);
 
-    const tmpArray = [
-        { id: 1, title: 'Тема вопросов', score: '2000' },
-        { id: 2, title: 'Тема вопросов', score: '2000' },
-        { id: 3, title: 'Тема вопросов', score: '2000' },
-        { id: 4, title: 'Тема вопросов', score: '2000' },
-        { id: 5, title: 'Тема вопросов', score: '2000' },
-        { id: 1, title: 'Тема вопросов', score: '2000' },
-        { id: 2, title: 'Тема вопросов', score: '2000' },
-        { id: 3, title: 'Тема вопросов', score: '2000' },
-        { id: 4, title: 'Тема вопросов', score: '2000' },
-        { id: 5, title: 'Тема вопросов', score: '2000' },
-    ];
+    useEffect(() => {
+        console.log(data);
+        // if (data) setCategory(data);
+    }, [data]);
 
+    // useEffect(() => {
+    //     dispatch(getCategoryThunk());
+    // }, [dispatch]);
 
     return (
         <div className={classNames(s.CategoryList)}>
             <div className={classNames(s.list)}>
                 <div id="statistic-table" className={classNames(s.slider)} onWheel={horizontalScroll}>
-                    {tmpArray.map((item) => (
+                    {isLoading
+                        && <div>Загрузка</div>}
+                    {Array.isArray(data) && data?.map((item:any) => (
                         <CategoryItem key={item.id} />
                     ))}
                 </div>
