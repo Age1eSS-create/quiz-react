@@ -29,8 +29,8 @@ export const CategoryList = () => {
                 <div id="statistic-table" className={classNames(s.slider)} onWheel={horizontalScroll}>
                     {isLoading
                         && <div>Загрузка</div>}
-                    {Array.isArray(data) && data?.map((item:any) => (
-                        <CategoryItem key={item.id} />
+                    {Array.isArray(data) && data?.map((item:ICategory) => (
+                        <CategoryItem key={item.id} category={item} />
                     ))}
                 </div>
             </div>

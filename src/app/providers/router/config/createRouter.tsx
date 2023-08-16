@@ -14,6 +14,11 @@ export const createRouter = () => createBrowserRouter([
                 element: <MainPage />,
                 errorElement: <Navigate to="/error_404" />,
             },
+            {
+                path: '/quest/:id',
+                element: <div>Вопросы</div>,
+                errorElement: <Navigate to="/error_404" />,
+            },
         ],
     },
 ]);

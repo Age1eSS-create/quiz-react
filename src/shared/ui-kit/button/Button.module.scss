@@ -1,0 +1,21 @@
+.button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--txt-main);
+  font-size: 30px;
+  &.outline {
+    background: transparent;
+    color: var(--txt-main);
+    border: 1px solid var(--bg-transparent);
+    transition: all .5s;
+    &:hover {
+      background-color: var(--bg-transparent);
+    }
+  }
+  &.default {
+    background-color: var(--bg-transparent);
+  }
+}

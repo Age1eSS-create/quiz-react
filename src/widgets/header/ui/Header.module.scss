@@ -1,5 +1,6 @@
 .header {
   padding: 5px 0;
+  margin-top: 20px;
   .container {
     max-width: 1300px;
     margin: 0 auto;
@@ -13,6 +14,12 @@
       text-transform: uppercase;
       display: flex;
       column-gap: 15px;
+      .active {
+        color: var(--active-link);
+      }
+      .nonActive {
+        color: black;
+      }
       a {
         color: var(--txt-main);
         font-size: 18px;
@@ -24,3 +31,5 @@
     }
   }
 }
+
+
