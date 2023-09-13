@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/shared/ui-kit';
@@ -13,21 +13,24 @@ interface propsType {
 
 export const CategoryItem = ({ category } : propsType) => {
     const navigate = useNavigate();
+    const [flagHover, setFlagHover] = useState(false);
     const onClick = () => {
         console.log('onClick');
         navigate(`/quest/${category.id}`);
     };
 
     return (
-        <div className={classNames(s.item)}>
-            <h1 className={s.title}>{category.title}</h1>
-            <div className={s.info}>
-                <p className={s.text}>{category.subtitle}</p>
-                <p className={s.score}>{category.score} очков</p>
+        <div className={classNames(s.item)} onMouseEnter={e => setFlagHover(true)} onMouseLeave={e => setFlagHover(false)}>
+            <div className={s.img} />
+            <div className={s.text}>
+                <h2 className={s.title}>{category.title}</h2>
+                <p className={s.subtitle}>{category.subtitle}</p>
             </div>
-            <div className={s.button}>
-                <Button onCLick={onClick} mods={['outline']}>Пройти</Button>
-            </div>
+            {flagHover && (
+                <div className={s.score}>
+                    <div>{category.score} score</div>
+                </div>
+)}
         </div>
     );
 };

@@ -25,14 +25,18 @@ export const CategoryList = () => {
 
     return (
         <div className={classNames(s.CategoryList)}>
-            <div className={classNames(s.list)}>
-                <div id="statistic-table" className={classNames(s.slider)} onWheel={horizontalScroll}>
-                    {isLoading
-                        && <div>Загрузка</div>}
-                    {Array.isArray(data) && data?.map((item:ICategory) => (
-                        <CategoryItem key={item.id} category={item} />
-                    ))}
+            <h1 className={s.title}>Тесты онлайн</h1>
+            <div className={s.filter}>
+                <div className={s.multiSelect}>
+                    <div>Фильтр по категориям</div>
+                    <div>Фильтр по очкам</div>
                 </div>
+                <div className={s.search}>Поиск</div>
+            </div>
+            <div className={s.list}>
+                {Array.isArray(data) && data.map((item) => (
+                    <CategoryItem category={item} />
+                ))}
             </div>
         </div>
     );

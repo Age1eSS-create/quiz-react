@@ -4,12 +4,13 @@
   .container {
     max-width: 1300px;
     margin: 0 auto;
-    background-color: var(--bg-transparent);
-    padding: 15px 10px;
+    background-color: var(--bg-second);
+    padding: 15px 25px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--txt-second);
     .nav {
       text-transform: uppercase;
       display: flex;
@@ -21,7 +22,7 @@
         color: black;
       }
       a {
-        color: var(--txt-main);
+        color: var(--txt-second);
         font-size: 18px;
         font-weight: 500;
       }
