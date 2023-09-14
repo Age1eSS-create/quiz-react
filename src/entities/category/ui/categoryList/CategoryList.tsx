@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 
-import {ICategory, useGetCategoryListQuery} from '@/entities/category';
+import { ICategory, useGetCategoryListQuery } from '@/entities/category';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { horizontalScroll } from '@/shared/lib';
+import { Skeleton } from '@/shared/ui-kit';
 
 // import { getCategoryThunk } from '../../controller/getCategoryTHUNK';
 import { CategoryItem } from '../categoryItem/CategoryItem';
@@ -14,18 +15,15 @@ export const CategoryList = () => {
     const { data, error, isLoading } = useGetCategoryListQuery(1);
     // const [category, setCategory] = useState<Array<ICategory>>([]);
 
-    useEffect(() => {
-        console.log(data);
-        // if (data) setCategory(data);
-    }, [data]);
-
     // useEffect(() => {
     //     dispatch(getCategoryThunk());
     // }, [dispatch]);
 
     return (
         <div className={classNames(s.CategoryList)}>
-            <h1 className={s.title}>Тесты онлайн</h1>
+            <h1 className={classNames(s.title)}>
+                Тесты онлайн
+            </h1>
             <div className={s.filter}>
                 <div className={s.multiSelect}>
                     <div>Фильтр по категориям</div>
@@ -37,6 +35,14 @@ export const CategoryList = () => {
                 {Array.isArray(data) && data.map((item) => (
                     <CategoryItem category={item} />
                 ))}
+                {isLoading && (
+                    <>
+                        <div className={s.skeletonContainer}><Skeleton /></div>
+                        <div className={s.skeletonContainer}><Skeleton /></div>
+                        <div className={s.skeletonContainer}><Skeleton /></div>
+                        <div className={s.skeletonContainer}><Skeleton /></div>
+                    </>
+                )}
             </div>
         </div>
     );

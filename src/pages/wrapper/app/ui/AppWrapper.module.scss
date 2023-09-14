@@ -1,3 +1,12 @@
 .wrapper {
   height: 100vh;
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: var(--bg-container);
+    padding: 25px;
+    border-radius: 10px;
+    height: 88vh;
+    overflow-y: auto;
+  }
 }

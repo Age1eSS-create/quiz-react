@@ -1,9 +1,5 @@
+
 .CategoryList {
-  max-width: 1300px;
-  margin: 0 auto;
-  background-color: var(--bg-container);
-  padding: 25px;
-  border-radius: 10px;
   .title {
     font-size: 25px;
     margin-bottom: 25px;
@@ -29,5 +25,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    width: 100%;
+    .skeletonContainer {
+      width: 100%;
+      height: 70px;
+    }
   }
 }

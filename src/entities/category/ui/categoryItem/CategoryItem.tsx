@@ -20,7 +20,7 @@ export const CategoryItem = ({ category } : propsType) => {
     };
 
     return (
-        <div className={classNames(s.item)} onMouseEnter={e => setFlagHover(true)} onMouseLeave={e => setFlagHover(false)}>
+        <div className={classNames(s.item)} onMouseEnter={e => setFlagHover(true)} onMouseLeave={e => setFlagHover(false)} onClick={onClick}>
             <div className={s.img} />
             <div className={s.text}>
                 <h2 className={s.title}>{category.title}</h2>
