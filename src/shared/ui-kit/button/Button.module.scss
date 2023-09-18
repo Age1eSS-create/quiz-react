@@ -4,18 +4,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--txt-main);
-  font-size: 30px;
+  color: var(--txt-second);
+  font-size: 16px;
+  padding: 10px;
   &.outline {
     background: transparent;
-    color: var(--txt-main);
-    border: 1px solid var(--bg-transparent);
+    color: var(--txt-second);
+    border: 1px solid var(--txt-second);
     transition: all .5s;
+    border-radius: 10px;
     &:hover {
-      background-color: var(--bg-transparent);
+      background-color: var(--bg-main);
+      color: var(--txt-main);
+    }
+  }
+  &.blue {
+    color: var(--txt-main);
+    background-color: transparent;
+    border: 1px solid var(--bg-second);
+    transition: all .2s;
+    &:hover {
+      background-color: var(--bg-second);
+      color: var(--txt-second);
     }
   }
   &.default {
-    background-color: var(--bg-transparent);
+    background-color: transparent;
   }
 }

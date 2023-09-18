@@ -1,6 +1,7 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
 import { categoryApi } from '@/entities/category';
+import {userReducer} from "@/entities/user";
 
 // import { ThunkExtraArg } from './StateSchema';
 
@@ -9,13 +10,13 @@ import { categoryApi } from '@/entities/category';
  * Принимает @rootReducers - основные редьюсеры
  * Возвращает стор
  */
-export function createReduxStore<StateSchema>(rootReducers: ReducersMapObject<StateSchema>) {
-    // const reducerManager = createReducerManager<StateSchema>(rootReducers);
+export function createReduxStore<StateSchema>() {
 
     const store = configureStore({
-        // reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         reducer: {
             [categoryApi.reducerPath]: categoryApi.reducer,
+            userReducer,
+            // reducerManager.
         },
         devTools: __IS_DEV__,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(categoryApi.middleware),

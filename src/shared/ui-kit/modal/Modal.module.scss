@@ -1,0 +1,50 @@
+@keyframes openModal {
+  0% {
+    width: 0;
+    height: 0;
+
+  }
+  100% {
+    width: 400px;
+    height: 350px;
+  }
+}
+
+.modal {
+  background-color: rgba(86, 86, 86, 0.66);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  .container {
+    background-color: var(--bg-container);
+    color: var(--txt-main);
+    width: 400px;
+    height: 350px;
+    animation: openModal .5s;
+    border-radius: 10px;
+    overflow: hidden;
+    .head {
+      background-color: var(--bg-second);
+      color: var(--txt-second);
+      padding: 15px;
+      font-size: 20px;
+      margin-bottom: 15px;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+    .body {
+      padding: 15px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 50px;
+      row-gap: 10px;
+    }
+  }
+}

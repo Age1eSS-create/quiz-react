@@ -17,12 +17,11 @@ export const StoreProvider = ({
 }: {
     children: ReactNode
 }) => {
-    const rootReducers: ReducersMapObject<StateSchema> = {
-        userReducer,
-        categoryReducer,
-    };
+    // const rootReducers: ReducersMapObject<StateSchema> = {
+    //     userReducer,
+    // };
 
-    const store = useMemo(() => createReduxStore<StateSchema>(rootReducers), []);
+    const store = useMemo(() => createReduxStore<StateSchema>(), []);
 
     return (
         <Provider store={store}>

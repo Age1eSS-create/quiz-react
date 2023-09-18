@@ -6,7 +6,7 @@ import s from './Button.module.scss';
 interface propsType extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
     onCLick:MouseEventHandler<HTMLButtonElement>,
-    mods?: Array<'default' | 'outline'>,
+    mods?: Array<'default' | 'outline' | 'blue'>,
 
 }
 export const Button = ({
