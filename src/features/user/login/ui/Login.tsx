@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 import s from './Login.module.scss';
 import {Button, Modal} from '@/shared/ui-kit';
+import {Input} from "@/shared/ui-kit/input/Input";
+import {login} from "@/features/user/login/controller/loginUser";
 
 export const Login = () => {
     const [flagShow, setFlagShow] = useState(false);
@@ -25,11 +27,26 @@ interface propsType {
     closeModal: () => void;
 }
 const ModalLogin = ({ closeModal }:propsType) => {
+    const [loginForm, setLoginForm] = useState<{ name: string, password: string }>({ name: '', password: '' });
+    const [loading, setLoading] = useState(false)
+    const handlerChangeInput = (e:any) => {
+        e.preventDefault();
+        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+    };
+
+    const handlerLogin = async (e:any) => {
+        e.preventDefault();
+        setLoading((e:any) => true);
+        await login(loginForm.name);
+        setLoading((e:any) => false);
+        closeModal();
+    };
+
     return (
         <Modal onClose={closeModal} show={true} title="Зарегестрироваться">
-            <input type="text" placeholder={ 'Nickname' }/>
-            <input type="text" placeholder={ 'password' }/>
-            <Button onCLick={()=>{}} mods={['blue']}>Сохранить</Button>
+            <Input value={loginForm.name} onChange={handlerChangeInput} modes={['outline']} name="name" type="text" placeholder="Nickname" />
+            <Input value={loginForm.password} onChange={handlerChangeInput} modes={['outline']} name="password" type="text" placeholder="password" />
+            <Button onCLick={handlerLogin} mods={['blue']} loading={loading}>Сохранить</Button>
         </Modal>
     );
 };

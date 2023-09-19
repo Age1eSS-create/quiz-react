@@ -14,6 +14,7 @@ export const Modal = ({
     onClose,
     title,
     children,
+    ...anyProps
 }:propsType) => {
     return (
         <div className={classNames(s.modal, show && s.show)}>

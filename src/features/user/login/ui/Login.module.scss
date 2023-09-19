@@ -3,12 +3,12 @@
 }
 
 .loginModal {
-  position: absolute;
   display: flex;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #000000;
-  z-index: 5;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputs {
+
 }

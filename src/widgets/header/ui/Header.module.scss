@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: space-between;
     color: var(--txt-second);
+    //height: 85px;
     .nav {
       text-transform: uppercase;
       display: flex;
@@ -28,7 +29,9 @@
       }
     }
     .profile {
-
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
     }
   }
 }
