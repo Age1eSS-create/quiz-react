@@ -1,0 +1,52 @@
+{
+  "id": 1,
+  "title":"Категория 1",
+  "subtitle": "Вопросы на тему 1",
+  "score" : 5000,
+  "quests": [
+    {
+      "quest" : "Quest 1",
+      "correct": 1,
+      "answers": [
+        {
+          "id": 1,
+          "text": "good answer"
+        },
+        {
+          "id": 2,
+          "text": "bad answer"
+        },
+        {
+          "id": 3,
+          "text": "bad answer"
+        },
+        {
+          "id": 4,
+          "text": "bad answer"
+        }
+      ]
+    },
+    {
+      "quest" : "Quest 2 and text text textesxtextes",
+      "correct": 3,
+      "answers": [
+        {
+          "id": 1,
+          "text": "bad answer"
+        },
+        {
+          "id": 2,
+          "text": "bad answer"
+        },
+        {
+          "id": 3,
+          "text": "good answer"
+        },
+        {
+          "id": 4,
+          "text": "bad answer"
+        }
+      ]
+    }
+  ]
+}

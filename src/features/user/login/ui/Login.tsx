@@ -45,7 +45,7 @@ const ModalLogin = ({ closeModal }:propsType) => {
     return (
         <Modal onClose={closeModal} show={true} title="Зарегестрироваться">
             <Input value={loginForm.name} onChange={handlerChangeInput} modes={['outline']} name="name" type="text" placeholder="Nickname" />
-            <Input value={loginForm.password} onChange={handlerChangeInput} modes={['outline']} name="password" type="text" placeholder="password" />
+            <Input value={loginForm.password} onChange={handlerChangeInput} modes={['outline']} name="password" type="password" placeholder="password" />
             <Button onCLick={handlerLogin} mods={['blue']} loading={loading}>Сохранить</Button>
         </Modal>
     );

@@ -12,10 +12,17 @@ export const Header = () => {
     const [userName, setUserName] = useState(localStorage.getItem('user'));
     const user = localStorage.getItem('user');
 
+    const checkUser = async () => {
+        setTimeout(() => {
+            setUserName((prev:any) => localStorage.getItem('user'));
+            checkUser();
+        }, 5000);
+    };
+
     useEffect(() => {
-        setUserName(localStorage.getItem('user'))
-    }, [user]);
-    console.log(user);
+        checkUser();
+    }, []);
+
     return (
         <div className={classNames(s.header)}>
             <div className={classNames(s.container)}>
@@ -23,7 +30,7 @@ export const Header = () => {
                     <Link to="./main">Главная</Link>
                     <Link to="./main">Вопросы</Link>
                 </nav>
-                {userName
+                {localStorage.getItem('user')
                     ? (
                         <div className={s.profile}>
                             <UserName />
