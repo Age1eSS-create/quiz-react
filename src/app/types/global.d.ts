@@ -18,6 +18,10 @@ declare module '*.jpg' {
     const value: any;
     export = value;
 }
+declare module '*.gif' {
+    const value: any;
+    export = value;
+}
 
 declare const __IS_DEV__: boolean;
 declare const __URL__: string;

@@ -1,0 +1,53 @@
+.QuestInfo {
+  display: grid;
+  grid-template-rows: 1fr 1fr 100% 1fr;
+  .scoreContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    align-items: center;
+    font-size: 36px;
+    column-gap: 5px;
+    .score {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: var(--bg-score);
+      //color: var(--txt-second);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+  }
+  .title {
+    font-size: 36px;
+    text-align: center;
+    color: var(--txt-black);
+    margin-bottom: 25px;
+  }
+  .subtitle {
+    font-size: 20px;
+    text-align: center;
+    color: var(--txt-main);
+    margin-bottom: 20px;
+    line-height: 30px;
+  }
+  .footerContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    .time {
+      //img {
+      //  width: 65px;
+      //  height: 65px;
+      //}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      column-gap: 10px;
+    }
+  }
+}
