@@ -5,3 +5,7 @@
   <img src="https://img.shields.io/npm/v/typescript?logo=typescript"/>
   <img src="https://img.shields.io/npm/v/sass?logo=sass"/>
 </div>
+
+A web application for passing tests and playing quiz.
+- Registration new user.
+- Login user
