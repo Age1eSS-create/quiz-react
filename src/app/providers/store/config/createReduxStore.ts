@@ -1,6 +1,6 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
-import { categoryApi } from '@/entities/category';
+import { categoryApi, categoryReducer } from '@/entities/category';
 import { questApi } from "@/entities/quest/services/fetchQuest";
 import { userReducer } from "@/entities/user";
 
@@ -17,6 +17,7 @@ export function createReduxStore<StateSchema>() {
             [categoryApi.reducerPath]: categoryApi.reducer,
             [questApi.reducerPath]: questApi.reducer,
             userReducer,
+            categoryReducer,
             // reducerManager.
         },
         devTools: __IS_DEV__,

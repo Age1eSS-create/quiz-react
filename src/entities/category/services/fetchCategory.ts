@@ -21,6 +21,7 @@ export const categoryApi = createApi({
             },
             transformResponse: (response: { data: Array<ICategory> }) => response.data,
         }),
+
     }),
 });
 export const { useGetCategoryListQuery } = categoryApi;
