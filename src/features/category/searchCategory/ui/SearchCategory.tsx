@@ -1,18 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {Input} from "@/shared/ui-kit";
-import {searchCategoryThunk} from "@/features/category/searchCategory/controller/searchCategoryController";
-import {useThunk} from "@/shared/hooks";
+import React, { useEffect, useState } from 'react';
+
+import { useGetCategoryListQuery } from '@/entities/category/services/fetchCategory';
+import { Input } from '@/shared/ui-kit';
 
 export const SearchCategory = () => {
     const [text, setText] = useState('');
-    const searchCategory = useThunk(searchCategoryThunk);
+    const {data, error, refetch} = useGetCategoryListQuery(text);
 
     useEffect(() => {
         console.log('SEARCH: ', text);
-        searchCategory(text);
     }, [text]);
 
     return (
-        <Input value={text} modes={['outline']} placeholder={"Поиск"} onChange={e => setText(e.target.value)} />
+        <Input value={text} modes={['outline']} placeholder="Поиск" onChange={(e) => setText(e.target.value)} />
     );
 };

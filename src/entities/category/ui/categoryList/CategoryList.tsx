@@ -13,20 +13,19 @@ import {useAppSelector} from "@/shared/hooks/useAppSelector";
 import {useActions} from "@/shared/hooks";
 
 export const CategoryList = () => {
-    const dispatch = useAppDispatch();
-    const { data, error, isLoading } = useGetCategoryListQuery(1);
-    const { setCategory } = useActions(categoryActions);
-    const category = useAppSelector(getCategoryListSelector);
-    // const [category, setCategory] = useState<Array<ICategory>>([]);
-
+    // const dispatch = useAppDispatch();
+    const { data, error, isLoading } = useGetCategoryListQuery(null);
+    // const { setCategory } = useActions(categoryActions);
+    // const category = useAppSelector(getCategoryListSelector);
+    // // const [category, setCategory] = useState<Array<ICategory>>([]);
     useEffect(() => {
-        setCategory(data as Array<ICategory>);
-    }, [data]);
+        console.log(data);
+    }, [data])
 
     return (
         <div className={classNames(s.CategoryList)}>
             <div className={s.list}>
-                {Array.isArray(category) && category.map((item) => (
+                {Array.isArray(data) && data.map((item) => (
                     <CategoryItem category={item} />
                 ))}
                 {isLoading && (
