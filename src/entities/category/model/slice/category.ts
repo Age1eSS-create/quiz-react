@@ -12,6 +12,7 @@ const slice = createSlice({
     initialState,
     reducers: {
         setCategory: (state, action:PayloadAction<Array<ICategory>>) => {
+            console.log(action.payload)
             state.category = action.payload;
         },
     },

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { useGetCategoryListQuery } from '@/entities/category/services/fetchCategory';
+import {useGetCategoryListQuery, useGetCategorySearchListQuery} from '@/entities/category/services/fetchCategory';
 import { Input } from '@/shared/ui-kit';
 
 export const SearchCategory = () => {
     const [text, setText] = useState('');
-
+    // @ts-ignore
+    // const {data, error, isLoading } = useGetCategorySearchListQuery(text);
 
     useEffect(() => {
         console.log('SEARCH: ', text);

@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {categoryActions, ICategory} from '@/entities/category';
+import { Dispatch } from '@reduxjs/toolkit';
 
 export const categoryApi = createApi({
     reducerPath: 'categoryApi',
@@ -7,31 +8,33 @@ export const categoryApi = createApi({
     tagTypes: ['Category'],
     endpoints: (builder) => ({
         getCategoryList: builder.query<ICategory[], void>({
-            // @ts-ignore
-            query: async () => {
+            queryFn: async () => {
                 try {
                     const res = await fetch('./server/category.json');
                     const data = await res.json();
                     console.log(data.data)
+                    // dispatch(categoryActions.setCategory(data.data));
                     return data.data;
                 } catch (e) {
                     console.log('GetCategoryList ERROR', e);
                 }
             },
+
+        }),
+        getCategorySearchList: builder.query<ICategory[], void>({
             // @ts-ignore
-            async onQueryStarted(id, { dispatch, queryFulfilled, getState }) {
+            query: async (text:string) => {
                 try {
-                    const { data } = await queryFulfilled;
-                    console.log(data)
-                    // @ts-ignore
-                    dispatch(categoryActions.setCategory(data?.data));
+                    const res = await fetch('./server/category.json');
+                    const data = await res.json();
+                    console.log(data.data)
+                    return data.data.filter((item:ICategory) => item.title.includes(text) || item.subtitle.includes(text));
                 } catch (e) {
-                    console.log("ERROR onQueryStarted", e)
+                    console.log('GetCategoryList ERROR', e);
                 }
             },
         }),
-
     }),
 });
 
-export const { useGetCategoryListQuery } = categoryApi;
+export const { useGetCategoryListQuery, useGetCategorySearchListQuery } = categoryApi;
