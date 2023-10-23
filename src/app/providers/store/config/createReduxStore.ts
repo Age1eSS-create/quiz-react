@@ -17,17 +17,9 @@ export function createReduxStore<StateSchema>() {
             [categoryApi.reducerPath]: categoryApi.reducer,
             [questApi.reducerPath]: questApi.reducer,
             userReducer,
-            categoryReducer,
-            // reducerManager.
         },
         devTools: __IS_DEV__,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(categoryApi.middleware, questApi.middleware),
-        // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-        //     serializableCheck: false,
-        //     thunk: {
-        //         extraArgument,
-        //     },
-        // }),
     });
 
     // store.reducerManager = reducerManager;

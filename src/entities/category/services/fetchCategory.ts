@@ -1,51 +1,63 @@
+import { createEntityAdapter, createSelector, EntityState } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { ICategory } from '@/entities/category';
 
+const categoryAdapter = createEntityAdapter<ICategory>({
+    selectId: (category) => category.id,
+    sortComparer: (a, b) => a.title.localeCompare(b.title),
+});
+
+const initialState = categoryAdapter.getInitialState([]);
+
+// @ts-ignore
 export const categoryApi = createApi({
     reducerPath: 'categoryApi',
     baseQuery: fetchBaseQuery({ baseUrl: './server/' }),
+    tagTypes: ['Category'],
     endpoints: (builder: any) => ({
-        getCategoryList: builder.query({
-            queryFn: async (text?:string) => {
+        // @ts-ignore
+        getCategoryList: builder.query<ICategory[], void>({
+            query: async () => {
                 try {
                     const res = await fetch('./server/category.json');
-                    // eslint-disable-next-line no-promise-executor-return
-                    await new Promise((resolve) => setTimeout(resolve, 2000));
                     const data = await res.json();
-
-                    if (text) {
-                        data.data = data?.data.filter((item:ICategory) => item.title.includes(text) || item.subtitle.includes(text));
-                    }
-
-                    console.log(data);
-                    return data;
+                    console.log(data.data)
+                    return data.data;
                 } catch (e) {
                     console.log('GetCategoryList ERROR', e);
                 }
             },
-            transformResponse: (response: { data: Array<ICategory> }) => response.data,
+            transformResponse: (response: Array<ICategory>) => {
+                console.log(response);
+                return categoryAdapter.setAll(initialState, response);
+            },
+            // @ts-ignore
+            providesTags: (result, error, arg) => (result
+            // @ts-ignore
+                ? [...result.map(({ id }) => ({ type: 'Category' as const, id })), 'Category']
+                : ['Category']),
         }),
-        // searchCategoryList: builder.query({
-        //     queryFn: async (text:string) => {
-        //         try {
-        //             const res = await fetch('./server/category.json');
-        //             const data = await res.json();
-        //             data.data = data?.data.filter((item:ICategory) => item.title.includes(text) || item.subtitle.includes(text));
-        //             console.log(data);
-        //             return data;
-        //         } catch (e) {
-        //             console.log('GetCategoryList ERROR', e);
-        //         }
-        //     },
-        //     transformResponse: (response: { data: Array<ICategory> }) => response.data,
-        // }),
-
     }),
 });
+
 export const { useGetCategoryListQuery } = categoryApi;
-// export const fetchCategory = () => {
-//     const response = fetch('./server/category.json');
-//     console.log(response);
-//     return response;
-// };
+
+// @ts-ignore
+export const selectCategoryResult = categoryApi.endpoints.getCategoryList.select();
+
+const selectCategoryData = createSelector(
+    selectCategoryResult,
+    (categoryResult) => categoryResult,
+);
+
+export const {
+    selectAll: selectAllCategoryList,
+    selectById: selectCategoryById,
+    selectIds: selectCategoryIds,
+    // @ts-ignore
+} = categoryAdapter.getSelectors((state) => {
+    console.log(state)
+    // @ts-ignore
+    return selectCategoryData(state) ?? initialState;
+});
