@@ -16,6 +16,7 @@ export function createReduxStore<StateSchema>() {
         reducer: {
             [categoryApi.reducerPath]: categoryApi.reducer,
             [questApi.reducerPath]: questApi.reducer,
+            categoryReducer,
             userReducer,
         },
         devTools: __IS_DEV__,

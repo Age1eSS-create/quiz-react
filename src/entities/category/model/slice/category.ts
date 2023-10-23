@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createEntityAdapter } from '@reduxjs/toolkit';
 
 import { CategorySchema, ICategory } from '@/entities/category';
 
 
-const initialState:CategorySchema = {
+const initialState: CategorySchema = {
     category: null,
 };
 
@@ -11,8 +11,7 @@ const slice = createSlice({
     name: 'category',
     initialState,
     reducers: {
-        setCategory: (state:CategorySchema, action:PayloadAction<Array<ICategory>>) => {
-            console.log(action.payload)
+        setCategory: (state, action:PayloadAction<Array<ICategory>>) => {
             state.category = action.payload;
         },
     },

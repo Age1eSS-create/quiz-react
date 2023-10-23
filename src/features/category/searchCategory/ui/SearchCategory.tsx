@@ -5,7 +5,7 @@ import { Input } from '@/shared/ui-kit';
 
 export const SearchCategory = () => {
     const [text, setText] = useState('');
-    const {data, error, refetch} = useGetCategoryListQuery(text);
+
 
     useEffect(() => {
         console.log('SEARCH: ', text);
